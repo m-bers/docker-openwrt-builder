@@ -51,7 +51,7 @@ jobs:
         context: ./openwrt-builder/
         platforms: linux/amd64,linux/arm64,linux/armhf
         push: true
-        tags: mber5/openwrt-builder:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-builder:latest
 
   openwrt-builder-branch:
     name: 'Build openwrt-builder branch images'
@@ -96,16 +96,6 @@ jobs:
         context: ./openwrt-builder-branch/
         platforms: linux/amd64,linux/arm64,linux/armhf
         push: true
-        tags: mber5/openwrt-builder:${{ matrix.branch }}
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-builder:${{ matrix.branch }}
         build-args: |
           OPENWRT_BRANCH="${{ matrix.branch }}
-    
-#     - name: 'Build image DockerHub'
-#       run: |
-#         echo "Building ${{ matrix.branch }} branch."
-
-#         # build images
-#         docker build -t sbilly/openwrt-builder:${{ matrix.branch }} --build-arg OPENWRT_BRANCH="${{ matrix.branch }}" ./openwrt-builder-branch/
-
-#         # push image
-#         docker push sbilly/openwrt-builder:${{ matrix.branch }}
