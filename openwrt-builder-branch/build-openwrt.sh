@@ -72,7 +72,7 @@ openwrt_make() {
 openwrt_install_netmaker_feeds() {
 	cd ${WORK_DIR}/openwrt
 
-	echo "src-git netmaker http://github.com/sbilly/netmaker-openwrt.git" >> feeds.conf.default
+	echo "src-git netmaker http://github.com/m-bers/netmaker-openwrt.git" >> feeds.conf.default
 
 	./scripts/feeds update netmaker
 	./scripts/feeds install netmaker
